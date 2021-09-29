@@ -70,6 +70,17 @@ insert into tbl_jogos values
  dos Estados Unidos. Conforme divisões internas profundas ameaçam despedaçar a gangue, Arthur deve fazer uma 
  escolha entre os seus próprios ideais e a lealdade à gangue que o criou.</p>', 'N', '1', '1');
  
+ insert into tbl_jogos values
+(default, 'Assassins Creed III', '120.00', 'ac_3_capa', 'ac_3_template', '89',
+'<p>O ano é 1775. As colônias americanas estão prestes a se revoltar. Você é Connor, um assassino que jurou 
+garantir a Liberdade de seu povo e sua nação. Para fazê-lo, você caçará seus inimigos por um impressionante e 
+grande mundo aberto e realístico. Você desferirá suas habilidades letais em uma jornada violenta que o levará 
+das ruas de cidades caóticas até os campos banhados de sangue, nas hostis florestas americanas e além. Você 
+encontrará lendários heróis da história americana, e juntos conspirarão para aniquilar aqueles que ameaçam a 
+Liberdade.</p>', 'N', '1', '2', 'Third');
+ 
+ 
+ 
 update tbl_jogos set carossel_position = 'First' where cod_jg = 1;
 update tbl_jogos set carossel_position = 'Second' where cod_jg = 2;
 
@@ -95,5 +106,5 @@ inner join tbl_categoria
     
 select * from vw_jogos;
 
-drop view vw_jogos;
+select template_jg, nome_jg, preco_jg, carossel_position  from vw_jogos where cod_jg > 1;
 
