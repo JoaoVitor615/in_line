@@ -50,6 +50,7 @@
       include 'conexao.php';
       
       $consulta = $cn->query('select * from vw_jogos;');
+      $consultacar = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position  from vw_jogos where cod_jg > 1;');
       $exibe = $consulta->fetch(PDO::FETCH_ASSOC);
     ?>
 
@@ -64,7 +65,7 @@
   </div>
 </div>
 
-<?php if($exibe['template_jg'] != null){?>
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col-sm-7 col-sm-offset-7">
@@ -75,19 +76,28 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
               </ol>
               <div  id="container_car" class="carousel-inner">
+
                 <div class="carousel-item active">
-                  <img class="d-block w-100" src="imagens/<?php echo $exibe['template_jg'];?>.png" alt="First slide">
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5><?php echo $exibe['nome_jg'];?></h5>
-                    <p>R$ <?php echo $exibe['preco_jg'];?></p>
+                    <img class="d-block w-100" src="imagens/reddead_template.png" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Red Dead Redemption 2</h5>
+                      <p>R$ 239,00</p>
+                    </div>
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="imagens/reddead template.png" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                  <img class="d-block w-100" src="imagens/red dead 2.jpg" alt="Third slide">
-                </div>
+
+
+                <?php while($carrossel = $consultacar->fetch(PDO::FETCH_ASSOC)){ ?>
+                  
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="imagens/<?php echo $carrossel['template_jg'];?>.png" alt="<?php echo $carrossel['carossel_position'];?> slide">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5><?php echo $carrossel['nome_jg'];?></h5>
+                      <p>R$ <?php echo $carrossel['preco_jg'];?></p>
+                    </div>
+                  </div>
+
+                <?php }; ?>
+                
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -101,12 +111,8 @@
         </div>
     </div>
 </div>
-<?php } ?>
 
-<?php 
-echo $exibe['nome_jg'];
-echo $exibe['preco_jg'];
-?>
+
 
 </body>
 </html>

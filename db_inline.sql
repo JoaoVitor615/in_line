@@ -53,6 +53,11 @@ select * from tbl_categoria;
 insert into tbl_desenvolv
 values(default,'Rockstar Games'),
 (default, 'Ubisoft');
+insert into tbl_desenvolv
+values(default,'Eletronic Arts');
+
+delete from tbl_jogos;
+
 
 select * from tbl_desenvolv;
 
@@ -65,6 +70,9 @@ insert into tbl_jogos values
  dos Estados Unidos. Conforme divisões internas profundas ameaçam despedaçar a gangue, Arthur deve fazer uma 
  escolha entre os seus próprios ideais e a lealdade à gangue que o criou.</p>', 'N', '1', '1');
  
+update tbl_jogos set carossel_position = 'First' where cod_jg = 1;
+update tbl_jogos set carossel_position = 'Second' where cod_jg = 2;
+
  select * from tbl_jogos;
  
  create view vw_jogos
@@ -78,6 +86,7 @@ insert into tbl_jogos values
         tbl_jogos.template_jg,
         tbl_jogos.qtd_jg,
         tbl_jogos.resumo_jg,
+        tbl_jogos.carossel_position,
         tbl_jogos.lacamento_jg
 from tbl_jogos inner join tbl_desenvolv
 	on tbl_jogos.cod_jg = tbl_desenvolv.cd_desenvolv
@@ -85,4 +94,6 @@ inner join tbl_categoria
 	on tbl_jogos.cd_categoria = tbl_categoria.cd_categoria;
     
 select * from vw_jogos;
+
+drop view vw_jogos;
 
