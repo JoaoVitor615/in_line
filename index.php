@@ -23,6 +23,10 @@
           transition: 600ms;
         }
 
+        .text_shadow{
+          text-shadow: 0.1em 0.1em 0.4em black;
+        }
+
 
 
         .jumbotron-with-background {
@@ -50,8 +54,12 @@
       include 'conexao.php';
       
       $consulta = $cn->query('select * from vw_jogos;');
-      $consultacar = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position  from vw_jogos where cod_jg > 1;');
+      
+      $consultacar = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position from vw_jogos where cod_jg > 1;');
       $exibe = $consulta->fetch(PDO::FETCH_ASSOC);
+
+      $consultafirst = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position from vw_jogos where carossel_position = "First";');
+      $firstslide = $consultafirst->fetch(PDO::FETCH_ASSOC); 
     ?>
 
 
@@ -78,10 +86,10 @@
               <div  id="container_car" class="carousel-inner">
 
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="imagens/reddead_template.png" alt="First slide">
+                    <img class="d-block w-100" src="imagens/<?php echo $firstslide['template_jg'];?>.png" alt="<?php echo $firstslide['carossel_position'];?> slide">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5>Red Dead Redemption 2</h5>
-                      <p>R$ 239,00</p>
+                      <h5 class="text_shadow"><?php echo $firstslide['nome_jg'];?></h5>
+                      <p class="text_shadow"><?php echo $firstslide['preco_jg'];?></p>
                     </div>
                   </div>
 
@@ -91,8 +99,8 @@
                   <div class="carousel-item">
                     <img class="d-block w-100" src="imagens/<?php echo $carrossel['template_jg'];?>.png" alt="<?php echo $carrossel['carossel_position'];?> slide">
                     <div class="carousel-caption d-none d-md-block">
-                      <h5><?php echo $carrossel['nome_jg'];?></h5>
-                      <p>R$ <?php echo $carrossel['preco_jg'];?></p>
+                      <h5 class="text_shadow"><?php echo $carrossel['nome_jg'];?></h5>
+                      <p class="text_shadow">R$ <?php echo $carrossel['preco_jg'];?></p>
                     </div>
                   </div>
 
