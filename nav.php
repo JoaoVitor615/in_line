@@ -19,8 +19,8 @@
           Categorias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">FPS</a>
-          <a class="dropdown-item" href="#">Ação</a>
+          <a class="dropdown-item" href="categoria.php?cat=FPS">FPS</a>
+          <a class="dropdown-item" href="categoria.php?cat=Ação">Ação</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Todos</a>
         </div>
@@ -28,8 +28,8 @@
     </ul>
 
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Pesquisar</button>
     </form>
   </div>
 </nav>

@@ -34,8 +34,22 @@
           background-position:center;
           background-repeat: no-repeat;
           background-size: cover;
+        }
 
+        #container-card{
+          max-width: 80vw;
+          
+        }
 
+        .card-config{
+          transition: 150ms;
+          margin: 30px 0px 30px 0px;
+        }
+
+        .card-config:hover{
+          cursor: pointer;
+          box-shadow:  rgb(204, 204, 204) 0px 0px 15px 0px;
+          transition: 150ms;
         }
         
     </style>
@@ -65,7 +79,7 @@
 
 
 
-
+<!-- Jumbotron -->
 <div class="jumbotron jumbotron-fluid jumbotron-with-background">
   <div class="container">
     <h1 class="display-4 text-light">IN.Line</h1>
@@ -73,7 +87,7 @@
   </div>
 </div>
 
-
+<!-- Carrossel de slides -->
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col-sm-7 col-sm-offset-7">
@@ -85,6 +99,7 @@
               </ol>
               <div  id="container_car" class="carousel-inner">
 
+                <!-- Carrosel da classse active -->
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="imagens/<?php echo $firstslide['template_jg'];?>.png" alt="<?php echo $firstslide['carossel_position'];?> slide">
                     <div class="carousel-caption d-none d-md-block">
@@ -96,6 +111,7 @@
 
                 <?php while($carrossel = $consultacar->fetch(PDO::FETCH_ASSOC)){ ?>
                   
+                  <!-- Carrossel sem a classe active -->
                   <div class="carousel-item">
                     <img class="d-block w-100" src="imagens/<?php echo $carrossel['template_jg'];?>.png" alt="<?php echo $carrossel['carossel_position'];?> slide">
                     <div class="carousel-caption d-none d-md-block">
@@ -107,6 +123,8 @@
                 <?php }; ?>
                 
               </div>
+
+              <!-- Botões do carrossel -->
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
@@ -118,9 +136,91 @@
             </div>
         </div>
     </div>
-</div>
+</div><!-- Fim do container do carrossel -->
 
+
+
+
+<!--
+<div class="card-deck">
+
+    <div class="card" style="width: 13rem;">
+      <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Red Dead Redemption 2</h5>
+        <p class="card-text"> Teste </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+      
+    </div>
+
+</div>
+-->
+
+<div id="container-card" class="container-fluid">
+  <div class="row">
+
+
+    <div class="col-sm-3">
+      <div class="card card-config" style="width: 13rem;">
+          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <div class="card-body">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text"> Teste </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-config" style="width: 13rem;">
+          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <div class="card-body">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text"> Teste </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-config" style="width: 13rem;">
+          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <div class="card-body">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text"> Teste </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-config" style="width: 13rem;">
+          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <div class="card-body">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text"> Teste </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="card card-config" style="width: 13rem;">
+          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <div class="card-body">
+            <h5 class="card-title">Red Dead Redemption 2</h5>
+            <p class="card-text"> Teste </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 
 
 </body>
 </html>
+<?php include 'footer.html' ?>
