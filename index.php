@@ -51,6 +51,7 @@
           box-shadow:  rgb(204, 204, 204) 0px 0px 15px 0px;
           transition: 150ms;
         }
+
         
     </style>
 
@@ -70,7 +71,7 @@
       $consulta = $cn->query('select * from vw_jogos;');
       
       $consultacar = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position from vw_jogos where cod_jg > 1;');
-      $exibe = $consulta->fetch(PDO::FETCH_ASSOC);
+      
 
       $consultafirst = $cn->query('select template_jg, nome_jg, preco_jg, carossel_position from vw_jogos where carossel_position = "First";');
       $firstslide = $consultafirst->fetch(PDO::FETCH_ASSOC); 
@@ -113,7 +114,7 @@
                   
                   <!-- Carrossel sem a classe active -->
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="imagens/<?php echo $carrossel['template_jg'];?>.png" alt="<?php echo $carrossel['carossel_position'];?> slide">
+                    <img class="d-block w-100" src="template/<?php echo $carrossel['template_jg'];?>.png" alt="<?php echo $carrossel['carossel_position'];?> slide">
                     <div class="carousel-caption d-none d-md-block">
                       <h5 class="text_shadow"><?php echo $carrossel['nome_jg'];?></h5>
                       <p class="text_shadow">R$ <?php echo $carrossel['preco_jg'];?></p>
@@ -161,61 +162,24 @@
   <div class="row">
 
 
+    <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)){?>
     <div class="col-sm-3">
       <div class="card card-config" style="width: 13rem;">
-          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
+          <img class="card-img-top" src="capa/<?php echo $exibe['capa_jg'];?>.png" class="img-responsive" alt="Card image cap" style="width:100%;">
           <div class="card-body">
-            <h5 class="card-title">Red Dead Redemption 2</h5>
-            <p class="card-text"> Teste </p>
+            <h5 class="card-title"><?php echo $exibe['nome_jg'];?></h5>
+            <p class="card-text"><?php echo $exibe['preco_jg'];?></p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+
+          
+          <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
           </div>
       </div>
     </div>
-
-    <div class="col-sm-3">
-      <div class="card card-config" style="width: 13rem;">
-          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
-          <div class="card-body">
-            <h5 class="card-title">Red Dead Redemption 2</h5>
-            <p class="card-text"> Teste </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="card card-config" style="width: 13rem;">
-          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
-          <div class="card-body">
-            <h5 class="card-title">Red Dead Redemption 2</h5>
-            <p class="card-text"> Teste </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="card card-config" style="width: 13rem;">
-          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
-          <div class="card-body">
-            <h5 class="card-title">Red Dead Redemption 2</h5>
-            <p class="card-text"> Teste </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div class="card card-config" style="width: 13rem;">
-          <img class="card-img-top" src="imagens/reddead_capa.png" class="img-responsive" alt="Card image cap" style="width:100%;">
-          <div class="card-body">
-            <h5 class="card-title">Red Dead Redemption 2</h5>
-            <p class="card-text"> Teste </p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-      </div>
-    </div>
-
+    <?php } ?>
+    
 
   </div>
 </div>
