@@ -108,3 +108,4 @@ select * from vw_jogos;
 
 select template_jg, nome_jg, preco_jg, carossel_position  from vw_jogos where cod_jg > 1;
 
+update tbl_jogos set preco_jg = '150.00' where cod_jg = 2;
